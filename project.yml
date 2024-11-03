@@ -1,0 +1,50 @@
+name: ObjCSwiftUIDemo
+options:
+  bundleIdPrefix: com.example
+  deploymentTarget:
+    iOS: 14.0
+  xcodeVersion: "14.0"
+  groupSortPosition: top
+
+settings:
+  base:
+    SWIFT_VERSION: 5.0
+    CLANG_ENABLE_MODULES: YES
+    SWIFT_OBJC_BRIDGING_HEADER: ObjCSwiftUIDemo/Supporting Files/ObjCSwiftUIDemo-Bridging-Header.h
+
+targets:
+  ObjCSwiftUIDemo:
+    type: application
+    platform: iOS
+    sources:
+      - path: ObjCSwiftUIDemo
+        excludes:
+          - "**/*.md" # Exclude any markdown files
+    settings:
+      INFOPLIST_FILE: ObjCSwiftUIDemo/Supporting Files/Info.plist
+    prebuildScripts:
+      - script: |
+          if [ -f "${SRCROOT}/.xcode-version" ]; then
+            echo "$(cat ${SRCROOT}/.xcode-version)" > ${SRCROOT}/.xcode-version
+          fi
+        name: Set Xcode Version
+    info:
+      path: ObjCSwiftUIDemo/Supporting Files/Info.plist
+      properties:
+        LSRequiresIPhoneOS: true
+        UILaunchStoryboardName: LaunchScreen
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+          UISceneConfigurations:
+            UIWindowSceneSessionRoleApplication:
+              - UISceneDelegationClassName: $(PRODUCT_MODULE_NAME).SceneDelegate
+                UISceneConfigurationName: Default Configuration
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
