@@ -44,3 +44,37 @@ targets:
           - UIInterfaceOrientationPortraitUpsideDown
           - UIInterfaceOrientationLandscapeLeft
           - UIInterfaceOrientationLandscapeRight
+  SwiftUIWrap:
+    type: application
+    platform: iOS
+    sources:
+      - path: ObjCSwiftUIDemo
+        excludes:
+          - "**/*.md"
+    dependencies:
+      - target: ObjCSwiftUIDemo
+    settings:
+      INFOPLIST_FILE: ObjCSwiftUIDemo/Supporting_Files/Info.plist
+      PRODUCT_MODULE_NAME: SwiftUIWrap
+      SWIFT_OBJC_BRIDGING_HEADER: ObjCSwiftUIDemo/Supporting_Files/ObjCSwiftUIDemo-Bridging-Header.h
+    info:
+      path: ObjCSwiftUIDemo/Supporting_Files/Info.plist
+      properties:
+        LSRequiresIPhoneOS: true
+        UILaunchStoryboardName: LaunchScreen
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false
+          UISceneConfigurations:
+            UIWindowSceneSessionRoleApplication:
+              - UISceneConfigurationName: Default Configuration
+                UISceneDelegateClassName: $(PRODUCT_MODULE_NAME).SceneDelegate
+        UISceneStoryboardFile: ""
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight

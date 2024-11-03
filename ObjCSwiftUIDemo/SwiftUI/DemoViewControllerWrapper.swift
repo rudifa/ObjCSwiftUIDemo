@@ -1,8 +1,7 @@
-// DemoViewControllerWrapper.swift
 import SwiftUI
 
 struct DemoViewControllerWrapper: UIViewControllerRepresentable {
-    @Binding var message: String
+    var message: String
 
     func makeUIViewController(context: Context) -> DemoViewController {
         let viewController = DemoViewController()

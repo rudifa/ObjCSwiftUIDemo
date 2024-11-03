@@ -1,27 +1,22 @@
-// ContentView.swift
 import SwiftUI
 
-@objcMembers
-public class ContentViewHosting: NSObject {
-    public static func makeContentView() -> some View {
-        ContentView()
+struct ContentView: View {
+    var body: some View {
+        VStack {
+            Spacer()
+            Text("🌍")
+                .font(.system(size: 100))
+                .padding()
+            Spacer()
+            DemoViewControllerWrapper(message: "Hello from SwiftUI!")
+                .frame(height: 200)  // Set a fixed height
+            Spacer()
+        }
     }
 }
 
-public struct ContentView: View {
-    @State private var message: String = "Initial Message"
-
-    public init() {}  // Required for public access
-
-    public var body: some View {
-        VStack {
-            DemoViewControllerWrapper(message: $message)
-                .frame(height: 200)
-
-            Button("Update from SwiftUI") {
-                message = "Updated from SwiftUI at \(Date())"
-            }
-            .padding()
-        }
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
     }
 }
