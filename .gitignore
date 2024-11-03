@@ -1,6 +1,6 @@
 # .gitignore
 .DS_Store
 xcuserdata/
-*.xcodeproj
-*.xcworkspace
+#*.xcodeproj
+#*.xcworkspace
 .build/

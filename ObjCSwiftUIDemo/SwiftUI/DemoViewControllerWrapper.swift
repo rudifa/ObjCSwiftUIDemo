@@ -14,20 +14,3 @@ struct DemoViewControllerWrapper: UIViewControllerRepresentable {
         uiViewController.updateMessage(message)
     }
 }
-
-// ContentView.swift
-struct ContentView: View {
-    @State private var message: String = "Initial Message"
-
-    var body: some View {
-        VStack {
-            DemoViewControllerWrapper(message: $message)
-                .frame(height: 200)
-
-            Button("Update from SwiftUI") {
-                message = "Updated from SwiftUI at \(Date())"
-            }
-            .padding()
-        }
-    }
-}

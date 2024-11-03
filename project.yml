@@ -8,9 +8,8 @@ options:
 
 settings:
   base:
-    SWIFT_VERSION: 5.0
     CLANG_ENABLE_MODULES: YES
-    SWIFT_OBJC_BRIDGING_HEADER: ObjCSwiftUIDemo/Supporting Files/ObjCSwiftUIDemo-Bridging-Header.h
+    DEVELOPMENT_TEAM: LHA84NAPNA
 
 targets:
   ObjCSwiftUIDemo:
@@ -19,17 +18,13 @@ targets:
     sources:
       - path: ObjCSwiftUIDemo
         excludes:
-          - "**/*.md" # Exclude any markdown files
+          - "**/*.md"
+          - "**/*.swift"
     settings:
-      INFOPLIST_FILE: ObjCSwiftUIDemo/Supporting Files/Info.plist
-    prebuildScripts:
-      - script: |
-          if [ -f "${SRCROOT}/.xcode-version" ]; then
-            echo "$(cat ${SRCROOT}/.xcode-version)" > ${SRCROOT}/.xcode-version
-          fi
-        name: Set Xcode Version
+      INFOPLIST_FILE: ObjCSwiftUIDemo/Supporting_Files/Info.plist
+      PRODUCT_MODULE_NAME: ObjCSwiftUIDemo
     info:
-      path: ObjCSwiftUIDemo/Supporting Files/Info.plist
+      path: ObjCSwiftUIDemo/Supporting_Files/Info.plist
       properties:
         LSRequiresIPhoneOS: true
         UILaunchStoryboardName: LaunchScreen
@@ -37,8 +32,9 @@ targets:
           UIApplicationSupportsMultipleScenes: false
           UISceneConfigurations:
             UIWindowSceneSessionRoleApplication:
-              - UISceneDelegationClassName: $(PRODUCT_MODULE_NAME).SceneDelegate
-                UISceneConfigurationName: Default Configuration
+              - UISceneConfigurationName: Default Configuration
+                UISceneDelegateClassName: SceneDelegate
+        UISceneStoryboardFile: ""
         UISupportedInterfaceOrientations:
           - UIInterfaceOrientationPortrait
           - UIInterfaceOrientationLandscapeLeft
